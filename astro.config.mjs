@@ -58,6 +58,11 @@ function plugin() {
         };
       }
 
+      // Add data-uk-scroll to anchor links with hash
+      if (tagName === "a" && properties.href?.startsWith("#")) {
+        properties["data-uk-scroll"] = "offset: 40";
+      }
+
       node.properties = properties;
     });
   };
