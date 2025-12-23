@@ -87,27 +87,129 @@ To prevent user input, add the `disabled` attribute to the `<uk-input-range>` el
 
 <Snippet project="kit" component="input_range.disabled" />
 
+## Preventing layout shift
+
+When loading Web Components, there may be a brief delay before the content is fully rendered. This can result in a flash of unstyled content or unprocessed templates. To mitigate this issue, consider setting a predefined height on the parent element to prevent layout shift and ensure a smooth user experience.
+
+<Ec project="kit" path="input_range.2" />
+
+## Internationalization
+
+The Input Range component supports internationalization through multiple methods with the following priority order (highest to lowest):
+
+1. **Component-level i18n** (via `i18n` attribute or script tag)
+2. **Global component-specific namespace** (via `<script id="uk-i18n">`)
+3. **Default values**
+
+### Using the i18n attribute
+
+<Snippet project="kit" component="input_range.i18n" />
+
+### Using a configuration script
+
+<Snippet project="kit" component="input_range.i18n_config" />
+
+### Using global i18n
+
+Place this in your document `<head>` or before any input-range components:
+
+<Ec project="kit" path="input_range.3" />
+
+### Available i18n options
+
+| Key               | Default                            | Description                                                                     |
+| ----------------- | ---------------------------------- | ------------------------------------------------------------------------------- |
+| `aria-value-text` | Value: {'{value}'}                 | ARIA value text for single mode (supports {'{value}'} placeholder)              |
+| `aria-range-text` | Range from {'{low}'} to {'{high}'} | ARIA value text for multiple mode (supports {'{low}'}, {'{high}'} placeholders) |
+| `low-knob-label`  | Minimum value                      | ARIA label for the low/single knob                                              |
+| `high-knob-label` | Maximum value                      | ARIA label for the high knob (multiple mode only)                               |
+| `aria-label`      | Range slider                       | ARIA label for the component group                                              |
+
+## Custom classes
+
+The Input Range component supports custom CSS classes through the `cls` attribute. This allows you to style specific elements within the slider without modifying the component's internal structure.
+
+### Using simple string format
+
+Apply a class to the default element (host-inner):
+
+<Ec project="kit" path="input_range.4" />
+
+### Using JSON object format
+
+Target specific elements within the input range:
+
+<Ec project="kit" path="input_range.5" />
+
+### Using configuration script
+
+<Ec project="kit" path="input_range.6" />
+
+### Available cls targets
+
+| Target          | Description                                                           |
+| --------------- | --------------------------------------------------------------------- |
+| `host-inner`    | The main container wrapper for the entire component                   |
+| `runnable`      | The track/rail element that knobs slide along                         |
+| `fill`          | The filled portion of the track (from start to knob or between knobs) |
+| `knob`          | Base class for all knobs                                              |
+| `knob-low`      | The low/single knob (overrides `knob` for this knob)                  |
+| `knob-high`     | The high knob in multiple mode (overrides `knob`)                     |
+| `knob-dragging` | Additional class applied to knob while being dragged                  |
+| `label`         | Base class for value labels                                           |
+| `label-top`     | Class applied when label-position="top"                               |
+| `label-bottom`  | Class applied when label-position="bottom"                            |
+
+## Custom inline styles
+
+The Input Range component supports custom inline styles through the `stl` attribute. This allows you to apply specific CSS styles to individual elements within the slider.
+
+### Using simple string format
+
+Apply styles to the default element (host-inner):
+
+<Ec project="kit" path="input_range.7" />
+
+### Using JSON object format
+
+Target specific elements with custom styles:
+
+<Ec project="kit" path="input_range.8" />
+
+### Using configuration script
+
+<Ec project="kit" path="input_range.9" />
+
+### Available stl targets
+
+The `stl` attribute supports the same targets as the `cls` attribute. See the [Available cls targets](#available-cls-targets) table above for a complete list of targetable elements.
+
 ## Attributes
 
 The following attributes are available for this component:
 
-| Name                     | Type            | Default | Description                                                                           |
-| ------------------------ | --------------- | ------- | ------------------------------------------------------------------------------------- |
-| `force-prevent-rerender` | Boolean         | false   | Forcefully prevents component rerendering.                                            |
-| `name`                   | String          | `null`  | Specifies the name of the hidden input field for form submissions.                    |
-| `disabled`               | Boolean         | `false` | Disables the slider, preventing user interaction.                                     |
-| `multiple`               | Boolean         | `false` | Enables dual-knob mode for selecting a range of values.                               |
-| `min`                    | String          | `0`     | Defines the minimum selectable value.                                                 |
-| `max`                    | String          | `100`   | Defines the maximum selectable value.                                                 |
-| `step`                   | String          | `1`     | Specifies the interval between selectable values.                                     |
-| `label`                  | Boolean, String | `false` | Displays a value label above the knob (`true` for numbers, string for custom labels). |
-| `label-position`         | String          | `top`   | Sets the position of the label relative to the knob.                                  |
-| `value`                  | String          | `null`  | Defines the initial value (`"50.00"` for single, `"20.00,80.00"` for dual).           |
+| Name                     | Type           | Default | Description                                                                      |
+| ------------------------ | -------------- | ------- | -------------------------------------------------------------------------------- |
+| `multiple`               | Boolean        | false   | Enables dual-knob mode for selecting a value range                               |
+| `min`                    | Number         | 0       | Minimum allowed value for the slider                                             |
+| `max`                    | Number         | 100     | Maximum allowed value for the slider                                             |
+| `step`                   | Number         | 1       | Step increment for value changes                                                 |
+| `label`                  | String/Boolean | false   | Show value label on knob(s). Can be boolean (true/false) or custom text          |
+| `label-position`         | String         | top     | Position of the label relative to knob: `top` or `bottom`                        |
+| `aria-label`             | String         |         | Custom ARIA label for the component (overrides i18n default)                     |
+| `name`                   | String         |         | Name attribute for hidden input(s), enabling form submission                     |
+| `disabled`               | Boolean        | false   | Disables the entire component, preventing user interaction                       |
+| `required`               | Boolean        | false   | Marks the input as required for form validation                                  |
+| `value`                  | String         |         | Pre-set value (single) or comma-separated values (multiple mode)                 |
+| `cls`                    | String         |         | Custom CSS classes. Can be simple string or JSON object for targeting elements   |
+| `stl`                    | String         |         | Custom inline styles. Can be simple string or JSON object for targeting elements |
+| `i18n`                   | String         |         | Internationalization strings as JSON object or via configuration script          |
+| `force-prevent-rerender` | Boolean        | false   | Prevents component rerendering (useful for HTMX or SPA scenarios)                |
 
 ## Events
 
-The Input Range component triggers the following events on elements with this component attached:
+The Input Range component triggers the following event:
 
-| Name                   | Description                                                                           |
-| ---------------------- | ------------------------------------------------------------------------------------- |
-| `uk-input-range:input` | Fired after the value has changed, providing an opportunity to respond to user input. |
+| Name                   | Description                                                                                                                                                                     |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `uk-input-range:input` | Fired when the range value changes. Event detail contains `{value: string \| string[]}`. In single mode, value is a string. In multiple mode, value is an array of two strings. |
