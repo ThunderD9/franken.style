@@ -4,7 +4,6 @@ import { resolve } from "path";
 
 const { version = "latest", component, project = "style" } = Astro.props;
 
-// const id = `hx-${component.replace(".", "-")}`;
 const route = `/hx/ec/${version}/${project}/${component.replace(".", "/")}`;
 
 let preview = "";
@@ -20,6 +19,23 @@ const basePath = resolve(
 
 const codePath = resolve(basePath, "code.html");
 const previewPath = resolve(basePath, "code.preview.html");
+
+// Define available clipboard variants (code.html/FS is always available)
+const clipboardVariants = [
+  {
+    key: "tw",
+    label: "TW",
+    tooltip: "Copy Tailwind CSS",
+    file: "code.tw.html",
+  },
+  // Add more variants here in the future, e.g.:
+  // { key: "bs", label: "BS", tooltip: "Copy Bootstrap", file: "code.bs.html" },
+];
+
+// Check which clipboard variants exist
+const availableClipboards = clipboardVariants.filter((variant) =>
+  existsSync(resolve(basePath, variant.file)),
+);
 
 try {
   // Always read code.html for line count
@@ -76,7 +92,9 @@ try {
     class="uk-button-group absolute [top] right display-hidden md:display-flex"
     style="--top: 9px; --right: 0"
   >
+    <!-- Frankenstyle button (always present) -->
     <button
+      type="button"
       class="uk-button uk-button-default uk-button-xsmall"
       data-uk-tooltip="Copy Frankenstyle"
       x-data
@@ -85,13 +103,21 @@ try {
       <uk-icon class="size" style="--size: 4" icon="copy"></uk-icon>
       FS
     </button>
-    <button
-      class="uk-button uk-button-default uk-button-xsmall"
-      data-uk-tooltip="Copy Tailwind CSS"
-      disabled
-    >
-      <uk-icon class="size" style="--size: 4" icon="copy"></uk-icon>
-      TW
-    </button>
+
+    <!-- Dynamic clipboard variant buttons -->
+    {
+      availableClipboards.map((variant) => (
+        <button
+          type="button"
+          class="uk-button uk-button-default uk-button-xsmall"
+          data-uk-tooltip={variant.tooltip}
+          x-data
+          x-on:click={`copyPreview('${route}/clipboard/${variant.key}')`}
+        >
+          <uk-icon class="size" style="--size: 4" icon="copy" />
+          {variant.label}
+        </button>
+      ))
+    }
   </div>
 </div>
