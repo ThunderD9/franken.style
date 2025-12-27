@@ -18,15 +18,19 @@ Under the hood, FrankenstyleKit uses Lucide, a collection of open-source icons k
 
 Make sure to include the icon library script. For more details, see the [installation instructions](/docs/2.1/javascript).
 
+Once included, you can use the `<uk-icon>` tag and place any icon you like, for example:
+
+<Ec project="kit" path="icon.11" />
+
+## Opting out
+
+Using the built-in icon is completely optional. If you prefer to use a different icon library, place the code below right before loading any components. This suppresses errors and prevents missing object issues.
+
+<Ec project="kit" path="icon.2" />
+
 ## Icon library
 
 To view the list of all currently available icons, please visit the [Lucide](https://lucide.dev) website for the complete catalog of 1000+ icons.
-
-### Suppressing error
-
-Using the built-in icon is fully optional. If you choose not to use it and prefer other icon libraries instead, make sure to suppress errors to avoid issues, etc.
-
-<Ec project="kit" path="icon.2" />
 
 ## Accessibility
 
