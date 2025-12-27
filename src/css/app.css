@@ -1,4 +1,5 @@
 @import "frankenstyle/css/frankenstyle-kit.css";
+/* @import "frankenstyle/css/chart.css"; */
 @import "./ec.css";
 
 @layer base {
@@ -139,6 +140,42 @@
     .root-layout {
       grid-template-columns: var(--container-2xs) 2.5rem minmax(0, 1fr) 2.5rem;
     }
+  }
+
+  .chart-card {
+    --chart-border-computed: color-mix(
+      in srgb,
+      var(--uk-border) var(--uk-border-o),
+      transparent
+    );
+
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+    border-color: var(--chart-border-computed);
+    padding: calc(var(--spacing) * 4);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+  .chart-card:hover {
+    --chart-hover-bg-computed: color-mix(
+      in srgb,
+      var(--uk-muted) var(--uk-muted-o),
+      transparent
+    );
+
+    background-color: var(--chart-hover-bg-computed);
+    transition-property:
+      color, background-color, border-color, outline-color,
+      text-decoration-color, fill, stroke, --tw-gradient-from,
+      --tw-gradient-via, --tw-gradient-to;
+    transition-timing-function: var(
+      --tw-ease,
+      var(--default-transition-timing-function)
+    );
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
 }
 

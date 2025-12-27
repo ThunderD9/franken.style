@@ -11,10 +11,11 @@ let lines = 0;
 const safelist: any = {
   "style.installation.css": 4,
   "style.installation.js": 4,
+  "kit.installation.chart": 4,
 };
 
-if (Object.keys(safelist).includes(path)) {
-  lines = safelist[path];
+if (Object.keys(safelist).includes(`${project}.${path}`)) {
+  lines = safelist[`${project}.${path}`];
 } else {
   const file = resolve(
     "src",

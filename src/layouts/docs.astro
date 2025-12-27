@@ -80,7 +80,7 @@ function titleCase(string: string) {
 }
 
 function isActive(href: string): boolean {
-  if (entry.data.alias === href) {
+  if (`${project}/${entry.data.alias}` === href) {
     return true;
   }
 
