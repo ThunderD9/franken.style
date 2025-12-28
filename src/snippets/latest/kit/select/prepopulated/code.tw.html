@@ -1,0 +1,38 @@
+<div class="space-y-2">
+  <label class="uk-form-label block">Select your planet</label>
+  <div class="uk-form-controls">
+    <div class="h-10">
+      <uk-select
+        cls="button: uk-input-fake justify-between w-full; dropdown: w-full"
+      >
+        <select data-fn="data-source" hidden>
+          <option>Mars</option>
+          <option>Jupiter</option>
+          <option>Saturn</option>
+          <option selected>Earth</option>
+        </select>
+      </uk-select>
+    </div>
+  </div>
+</div>
+
+<div class="mt-4 space-y-2">
+  <label class="uk-form-label block">Select your cars</label>
+  <div class="uk-form-controls">
+    <div class="h-10">
+      <uk-select
+        cls="button: uk-input-fake justify-between w-full; dropdown: w-full"
+        multiple
+      >
+        <select data-fn="data-source" hidden>
+          <option selected>Mercedes-Benz</option>
+          <option selected>Bentley</option>
+          <option>Audi</option>
+          <option selected>Porsche</option>
+          <option selected>Lamborghini</option>
+          <option>Ferrari</option>
+        </select>
+      </uk-select>
+    </div>
+  </div>
+</div>

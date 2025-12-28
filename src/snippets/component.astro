@@ -74,7 +74,7 @@ try {
       <div class="pt pb" style="--pt: 6; --pb: 10;" set:html={preview} />
     </li>
     <li>
-      <div class="ec">
+      <div class="mt ec" style="--mt: 6">
         <div
           class="bg/o animate-pulse"
           hx-trigger="intersect"
@@ -112,12 +112,22 @@ try {
           class="uk-button uk-button-default uk-button-xsmall"
           data-uk-tooltip={variant.tooltip}
           x-data
-          x-on:click={`copyPreview('${route}/clipboard/${variant.key}')`}
+          x-on:click={`copyPreview('${route}/clipboard_${variant.key}')`}
         >
           <uk-icon class="size" style="--size: 4" icon="copy" />
           {variant.label}
         </button>
       ))
     }
+
+    <a
+      class="uk-button uk-button-default uk-button-xsmall"
+      data-uk-tooltip="Report an issue or submit a PR"
+      href={`https://github.com/franken-ui/franken.style/tree/master/src/snippets/latest/${project}/${component.replace(".", "/")}`}
+      target="_blank"
+    >
+      <uk-icon class="size" style="--size: 4" icon="bug-off"></uk-icon>
+      PR
+    </a>
   </div>
 </div>
