@@ -1,0 +1,83 @@
+---
+import WizardTab from "components/partials/wizard_tab.astro";
+import Ec from "snippets/ec.astro";
+---
+
+<div class="mt" style="--mt: 10">
+  <WizardTab />
+
+  <ul class="wizard uk-switcher mt" style="--mt: 2">
+    <li class="uk-active">
+      <div class="mt" style="--mt: 10"></div>
+
+      <p class="uk-paragraph">
+        Perfect for beginners, the simplest installation can be done using CDN.
+      </p>
+
+      <Ec project="kit" path="installation.cdn" />
+    </li>
+    <li>
+      <div class="mt" style="--mt: 10"></div>
+
+      <p class="uk-paragraph">
+        First, install the latest version of FrankenstyleKit using NPM:
+      </p>
+
+      <Ec project="kit" path="installation.tailwind_v4" />
+
+      <p class="uk-paragraph">
+        Next, import the <code class="uk-codespan"
+          >frankenstyle-kit-standalone.css</code
+        > file into your main CSS file:
+      </p>
+
+      <Ec project="kit" path="installation.css" />
+
+      <p class="uk-paragraph">
+        Alternatively, you can pull FrankenstyleKit CSS directly from the <code
+          class="uk-codespan">node_modules</code
+        > directory.
+      </p>
+
+      <Ec project="kit" path="installation.css_node_modules" />
+
+      <p class="uk-paragraph">
+        <span class="uk-label uk-label-primary">Note</span> FrankenstyleKit is very
+        flexible and can be used alongside any CSS framework you're familiar with.
+        If you choose this approach, you're expected to provide your own resets and
+        utility classes. If you prefer a complete solution, import <code
+          class="uk-codespan">frankenstyle-kit.css</code
+        >
+        instead of <code class="uk-codespan"
+          >frankenstyle-kit-standalone.css</code
+        >.
+      </p>
+
+      <h3 class="uk-h4 mt" style="--mt: 10">
+        Using FrankenstyleKit with Tailwind CSS v4
+      </h3>
+
+      <p class="uk-paragraph">
+        If you'd like to use Tailwind CSS v4 alongside FrankenstyleKit, you can
+        manually configure your <code class="uk-codespan">@theme</code> directives
+        like so:
+      </p>
+
+      <Ec project="kit" path="installation.tailwind_config" />
+
+      <p class="uk-paragraph">
+        This will allow you to use utilities like <code class="uk-codespan"
+          >bg-primary</code
+        >, <code class="uk-codespan">bg-muted</code>, and other custom utility
+        classes within your project.
+      </p>
+    </li>
+  </ul>
+
+  <p class="uk-paragraph">
+    Once you're done, you may now proceed <a
+      class="uk-link"
+      href="/docs/latest/kit/javascript">adding JavaScript</a
+    >.
+  </p>
+</div>

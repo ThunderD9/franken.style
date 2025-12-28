@@ -1,0 +1,33 @@
+---
+import WizardTab from "components/partials/wizard_tab.astro";
+import Ec from "snippets/ec.astro";
+---
+
+<div class="mt" style="--mt: 10">
+  <WizardTab />
+
+  <ul class="wizard uk-switcher mt" style="--mt: 2">
+    <li class="uk-active">
+      <div class="mt" style="--mt: 10"></div>
+
+      <p class="uk-paragraph">
+        You can include the JavaScript files on your page like so:
+      </p>
+
+      <Ec project="kit" path="installation.javascript" />
+    </li>
+    <li>
+      <div class="mt" style="--mt: 10"></div>
+
+      <p class="uk-paragraph">
+        You can import the JavaScript from <code class="uk-codespan"
+          >frankenstyle</code
+        >, which you installed earlier, into your <code class="uk-codespan"
+          >app.js</code
+        > file.
+      </p>
+
+      <Ec project="kit" path="javascript.1" />
+    </li>
+  </ul>
+</div>

@@ -1,8 +1,49 @@
-<script
-  src="https://cdn.jsdelivr.net/npm/frankenstyle@[VERSION]/dist/js/core.iife.js"
-  type="module"
-></script>
-<script
-  src="https://cdn.jsdelivr.net/npm/frankenstyle@[VERSION]/dist/js/icon.iife.js"
-  type="module"
-></script>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- Load the core file in the <head> -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/frankenstyle@[VERSION]/dist/js/hwc-core.iife.js"
+      type="module"
+    ></script>
+  </head>
+  <body>
+    <!-- Your code here -->
+
+    <!-- For better performance, load additional dependencies at the bottom -->
+
+    <!-- Optional: Suppress errors if you don't plan to use Lucide or ApexCharts -->
+    <!--
+    <script>
+      window.Lucide = {};
+      window.ApexCharts = {};
+    </script>
+    -->
+
+    <!-- Optional: Icons -->
+    <!--
+    <script
+      src="https://cdn.jsdelivr.net/npm/frankenstyle@[VERSION]/dist/js/hwc-icon.iife.js"
+      type="module"
+    ></script>
+    -->
+
+    <!-- Optional: Charts -->
+    <!--
+    <script
+      src="https://cdn.jsdelivr.net/npm/frankenstyle@[VERSION]/dist/js/hwc-chart.iife.js"
+      type="module"
+    ></script>
+    -->
+
+    <!-- Load components last -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/frankenstyle@[VERSION]/dist/js/hwc-components.iife.js"
+      type="module"
+    ></script>
+  </body>
+</html>
